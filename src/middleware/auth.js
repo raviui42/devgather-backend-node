@@ -8,7 +8,7 @@ const userAuth = async(req, res, next) => {
             return res.status(401).send('Plase login again')
         }
 
-        const verifyTokeen = await jwt.verify(token, 'Devgather@4444')
+        const verifyTokeen = await jwt.verify(token, process.env.JWT_SECRET_KEY)
 
         const {userId} = verifyTokeen;
         if(!userId){

@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 
 const connectionDB = async() => {
-    await mongoose.connect('mongodb+srv://mynode:test1234@cluster0.elqdi1b.mongodb.net/devgather')
+    console.log(process.env.DATABASE_CONNECTION_KEY)
+    await mongoose.connect(process.env.DATABASE_CONNECTION_KEY)
 }
 
 module.exports = connectionDB

@@ -7,6 +7,8 @@ const requestRouts = require('./routs/request');
 const userRouter = require('./routs/user');
 const cors = require('cors')
 
+require('dotenv').config()
+
 const app = express();
 
 app.use(cors({
@@ -22,7 +24,7 @@ app.use('/', requestRouts)
 app.use('/', userRouter)
 
 connectionDB().then(() => {
-    app.listen(5000,()=>{
+    app.listen(process.env.PORT,()=>{
         console.log('connect server')
     })
 }).catch((err) => console.error('db not connect'))
